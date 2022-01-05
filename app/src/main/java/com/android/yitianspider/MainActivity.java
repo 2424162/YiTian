@@ -14,16 +14,26 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     public static String TAG = "test";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SpiderNet spiderNet = new SpiderNet();
-        spiderNet.upLoadImg();
 
-
-
-
+//        new Handler().postDelayed(() -> {
+//            SpiderNet spiderNet = new SpiderNet();
+//            spiderNet.upLoadImg();
+//        }, 1);
+//
+//
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MyThread thread = new MyThread();
+                thread.getFileName("/storage/emulated/0/Pictures/origin/photo/");
+                thread.NewFixedThreadPool();
+            }
+        }, 1);
     }
 
 
