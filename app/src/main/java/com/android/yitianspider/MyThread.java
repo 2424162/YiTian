@@ -13,15 +13,14 @@ import java.util.Queue;
 public class MyThread {
     private static String TAG = "test1";
     private Queue imageFiles = null;
+    private int fileSzie ;
 
     public void getFileName(String fileDir) {
-        List pathList = new ArrayList() {
-        };
+        List pathList = new ArrayList() {};
         File file = new File(fileDir);
         File[] subFile = file.listFiles();
-
+        fileSzie = subFile.length;
         for (int iFileLength = 0; iFileLength < subFile.length; iFileLength++) {
-            // 判断是否为文件夹
             if (!subFile[iFileLength].isDirectory()) {
                 String filename = subFile[iFileLength].getName();
                 pathList.add(fileDir + filename);
@@ -33,8 +32,8 @@ public class MyThread {
 
     public void NewFixedThreadPool() {
         SpiderNet spiderNet = new SpiderNet();
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
-        for (int i = 0; i < 10; i++) {
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        for (int i = 0; i < fileSzie; i++) {
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {

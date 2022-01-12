@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 MyThread thread = new MyThread();
-                thread.getFileName("/storage/emulated/0/Pictures/origin/photo/");
+                thread.getFileName("/storage/emulated/0/DCIM/Camera/");
                 thread.NewFixedThreadPool();
             }
         }, 1);

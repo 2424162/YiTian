@@ -31,7 +31,8 @@ import okhttp3.RequestBody;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class SpiderNet {
+public class
+SpiderNet {
     private static String TAG = "test";
     private OkHttpClient okHttpClient = new OkHttpClient();
 
@@ -70,7 +71,7 @@ public class SpiderNet {
             String afterProcess = dataObject.getString("afterProcess");
             Log.d(TAG, afterProcess.length() + "返回长度");
             Bitmap bitmap = getBitmap(afterProcess);
-            String newFileName  = img.split("photo/")[1];
+            String newFileName  = img.split("Camera/")[1];
             saveBitmapFile(bitmap,newFileName);
         } catch (IOException | JSONException e) {
             e.getStackTrace();
@@ -101,7 +102,7 @@ public class SpiderNet {
     }
 
     public void saveBitmapFile(@NotNull Bitmap bitmap,String newFileName) {
-        Log.d(TAG, "文件保存路径" + "/storage/emulated/0/Pictures/origin/" + newFileName);
+        //Log.d(TAG, "文件保存路径" + "/storage/emulated/0/Pictures/origin/" + newFileName);
         File file = new File("/storage/emulated/0/Pictures/origin/" + newFileName);//将要保存图片的路径
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
